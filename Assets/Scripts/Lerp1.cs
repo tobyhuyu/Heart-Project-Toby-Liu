@@ -32,8 +32,8 @@ public class Lerp1 : MonoBehaviour
             // Circular end position
             //endPosition[i] = new Vector3(r * Mathf.Sin(i * 2 * Mathf.PI / numSphere), r * Mathf.Cos(i * 2 * Mathf.PI / numSphere));
 
-            endPosition[i] = new Vector3(-3*(Mathf.Sqrt(2) * Mathf.Sin(i) * Mathf.Sin(i) * Mathf.Sin(i)),
-             -3*(-(Mathf.Cos(i) * Mathf.Cos(i) * Mathf.Cos(i)) - (Mathf.Cos(i) * Mathf.Cos(i)) + Mathf.Cos(i) + Mathf.Cos(i)));
+            endPosition[i] = new Vector3(-3.5f*(Mathf.Sqrt(2) * Mathf.Sin(i) * Mathf.Sin(i) * Mathf.Sin(i)),
+             -3*(-(Mathf.Cos(i) * Mathf.Cos(i) * Mathf.Cos(i)) - (Mathf.Cos(i) * Mathf.Cos(i)) + Mathf.Cos(i) + Mathf.Cos(i))-1);
         }
         // Let there be spheres..
         for (int i =0; i < numSphere; i++){
@@ -47,7 +47,7 @@ public class Lerp1 : MonoBehaviour
             // Color. Get the renderer of the spheres and assign colors.
             Renderer sphereRenderer = spheres[i].GetComponent<Renderer>();
             // HSV color space: https://en.wikipedia.org/wiki/HSL_and_HSV
-            float hue = (float)i / numSphere; // Hue cycles through 0 to 1
+            float hue = .8f; // Hue cycles through 0 to 1
             Color color = Color.HSVToRGB(hue, 1f, 1f); // Full saturation and brightness
             sphereRenderer.material.color = color;
         }
@@ -74,8 +74,8 @@ public class Lerp1 : MonoBehaviour
 
             // Color Update over time
             Renderer sphereRenderer = spheres[i].GetComponent<Renderer>();
-            float hue = (float)i / numSphere; // Hue cycles through 0 to 1
-            Color color = Color.HSVToRGB(Mathf.Abs(hue * Mathf.Sin(time)), Mathf.Cos(time), 2f + Mathf.Cos(time)); // Full saturation and brightness
+            float hue = .1f; // Hue cycles through 0 to 1
+            Color color = Color.HSVToRGB(Mathf.Abs(.7f+(hue * Mathf.Sin(time) / 1.1f)), 1f, 3f); // Full saturation and brightness
             sphereRenderer.material.color = color;
         }
     }
